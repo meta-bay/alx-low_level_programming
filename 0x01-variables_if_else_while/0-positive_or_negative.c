@@ -3,9 +3,10 @@
 /* more headers goes there */
 #include <stdio.h>
 
-/* main - check whether the number is positive or negative
+/** 
+ * main - Prints if number is positive, zero or negative
  * return: always(Success)
- * */
+ */
 int main(void)
 {
 	int n;
