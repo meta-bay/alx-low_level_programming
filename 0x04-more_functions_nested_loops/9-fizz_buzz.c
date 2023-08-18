@@ -1,38 +1,31 @@
+#include "main.h"
 #include <stdio.h>
 
 /**
-*main - fizzbuzz
-*Return: returns 0
-*/
-
+ * main - prints the numbers from 1 to 100,
+ * Return: Always 0 (Success)
+ */
 int main(void)
 {
-	int num1 = 1;
+	int i;
 
-	while (++num1 < 100)
+	for (i = 1; i <= 100; i++)
 	{
-		if ((num1 % 3 == 0) && (num1 % 5 == 0))
+		if (i % 3 == 0 && i % 5 != 0)
 		{
-			printf("FizzBuzz ");
-		}
-		else if ((num1 % 3) == 0)
+			printf(" Fizz");
+		} else if (i % 5 == 0 && i % 3 != 0)
 		{
-			printf("Fizz ");
-		}
-		else if ((num1 % 5) == 0)
+			printf(" Buzz");
+		} else if (i % 3 == 0 && i % 5 == 0)
 		{
-			if (num1 != 100)
-			{
-				printf("Buzz ");
-			}
-			else
-			{
-				printf("Buzz");
-			}
-		}
-		else
+			printf(" FizzBuzz");
+		} else if (i == 1)
 		{
-			printf("%d ", num1);
+			printf("%d", i);
+		} else
+		{
+			printf(" %d", i);
 		}
 	}
 	printf("\n");
