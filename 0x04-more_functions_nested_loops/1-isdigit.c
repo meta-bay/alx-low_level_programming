@@ -1,11 +1,11 @@
 #include "main.h"
+
 /**
  * _isdigit - digit or not
- *
  * @c: para
- *
- * Return: 0 
+ * Return: 0
  */
+
 int _isdigit(int c)
 {
 	if ((c >= 48) && (c <= 57))
