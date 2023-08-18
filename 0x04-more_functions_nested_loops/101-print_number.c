@@ -1,31 +1,27 @@
-#include <stdio.h>
 #include "main.h"
 
 /**
-* print_number - int
-* @n: para
-*/
-
+ * print_number - ints
+ * @n: para
+ */
 void print_number(int n)
 {
-	int divisor = 1;
+	unsigned int i;
 
 	if (n < 0)
 	{
-		putchar('-');
-		n = -n;
-	}
-
-	while (n / divisor >= 10)
-		divisor *= 10;
-
-	while (divisor != 0)
+		i = -n;
+		_putchar('-');
+	} else
 	{
-		int digit = n / divisor;
-
-		putchar(digit % 10 + '0');
-		divisor /= 10;
+		i = n;
 	}
 
+	if (i / 10)
+	{
+		print_number(i / 10);
+	}
+
+	_putchar((i % 10) + '0');
 }
 
