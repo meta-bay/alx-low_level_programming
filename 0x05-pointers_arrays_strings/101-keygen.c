@@ -14,12 +14,13 @@ int main(void)
 	int i, num, sum;
 
 	sum = 0;
+
 	srand(time(NULL));
 	for (i = 0; i < 100; i++)
 	{
 		password[i] = rand() % 78;
 		sum += (password[i] + '0');
-		putchar(password[0] + '0');
+		putchar(password[i] + '0');
 		if ((2772 - sum) - '0' < 78)
 		{
 			num = 2772 - sum - '0';
