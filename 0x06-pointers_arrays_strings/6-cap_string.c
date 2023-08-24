@@ -13,13 +13,13 @@ char *cap_string(char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		while (str[i] < 'a')
+		while (!(str[i] >= 'a' && str[i] <= 'z'))
 			i++;
-		if (str[i--] == " " ||
+		if (i == 0 ||
+			str[i--] == " " ||
 			 str[i--] == "\t" ||
 			 str[i--] == "\n" ||
 			 str[i--] == "," ||
-			 i == 0 ||
 			 str[i--] == ";" ||
 			 str[i--] == "." ||
 			 str[i--] == "!" ||
