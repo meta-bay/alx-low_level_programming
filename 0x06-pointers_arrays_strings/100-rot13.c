@@ -13,7 +13,7 @@ char *rot13(char *str)
 	char output[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
 	j = 0;
-	while (str[0] != 0)
+	while (str[j] != 0)
 	{
 		for (i = 0; i < 52; i++)
 		{
@@ -23,6 +23,7 @@ char *rot13(char *str)
 				break;
 			}
 		}
+		j++;
 	}
 	return (str);
 }
