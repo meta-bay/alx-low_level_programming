@@ -8,18 +8,19 @@
 
 char *leet(char *str)
 {
-	int i;
+	int i, j;
 	char arr1[] = "aAeEoOtTlL";
 	char arr2[] = "4433007711";
 
-	while (*str != '\0')
+	j = 0;
+	while (str[j] != '\0')
 	{
 		for (i = 0; i < 10; i++)
 		{
 			if (str[i] == arr1[i])
 				str[i] = arr2[i];
 		}
-		str++;
+		j++;
 	}
 	return (str);
 }
