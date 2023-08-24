@@ -17,8 +17,8 @@ char *leet(char *str)
 	{
 		for (i = 0; i < 10; i++)
 		{
-			if (str[i] == arr1[i])
-				str[i] = arr2[i];
+			if (str[j] == arr1[i])
+				str[j] = arr2[i];
 		}
 		j++;
 	}
