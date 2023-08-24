@@ -19,6 +19,7 @@ char *cap_string(char *str)
 			 str[i--] == "\t" ||
 			 str[i--] == "\n" ||
 			 str[i--] == "," ||
+			 i == 0 ||
 			 str[i--] == ";" ||
 			 str[i--] == "." ||
 			 str[i--] == "!" ||
