@@ -19,6 +19,7 @@ char *leet(char *str)
 			if (str[i] == arr1[i])
 				str[i] = arr2[i];
 		}
+		str++;
 	}
 	return (str);
 }
