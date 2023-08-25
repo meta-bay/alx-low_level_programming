@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * infinite_add - adds numbers
@@ -16,12 +15,12 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 
 	while (*(n1 + count1) != '\0')
 		count1++;
-	while (*(n2 + count12) != '\0')
+	while (*(n2 + count2) != '\0')
 		count2++;
 	if (count1 >= count2)
-		big = c1;
+		big = count1;
 	else
-		big = c2;
+		big = count2;
 	if (size_r <= big + 1)
 		return (0);
 	r[big + 1] = '\0';
