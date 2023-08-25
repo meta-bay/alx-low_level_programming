@@ -1,29 +1,6 @@
 #include "main.h"
 
 /**
- * reverse_string - reverse
- * @str: integers
- */
-
-void reverse_string(char *str)
-{
-	int i, j;
-	char temp;
-
-	i = 0;
-	j = 0;
-	while (str[i] != '\0')
-		i++;
-	i--;
-	while (j < i)
-	{
-		temp = (str[j]);
-		str[j] = str[i];
-		str[i] = temp;
-	}
-}
-
-/**
  * infinite_add - adds numbers
  * @n1: the first number
  * @n2: the second number
@@ -34,41 +11,45 @@ void reverse_string(char *str)
 
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int oflow = 0 digits = 0, i = 0, j = 0;
-	int num1 = 0, num2 = 0, total_temp = 0;
+	int count1 = 0, count2 = 0, operate, big, dgr1, dgr2, sum = 0;
 
-	while (n1[i] != '\0')
-		i++;
-	while (n2[j] != '\0')
-		j++;
-	i--;
-	j--;
-	if (j >= size_r || i >= size_r)
+	while (*(n1 + count1) != '\0')
+		count1++;
+	while (*(n2 + count12) != '\0')
+		count2++;
+	if (count1 >= count2)
+		big = c1;
+	else
+		big = c2;
+	if (size_r <= big + 1)
 		return (0);
-	while (j >= 0 || i >= 0 || oflow == 1)
+	r[big + 1] = '\0';
+	count1--, count2--, size_r--;
+	dgr1 = *(n1 + count1) - 48, dgr2 = *(n2 + count2) - 48;
+	while (big >= 0)
 	{
-		if (i < 0)
-			num1 = 0;
+		operate = dgr1 + dgr2 + sum;
+		if (operate >= 10)
+			sum = operate / 10;
 		else
-			num1 = n1[i] - '0';
-		if (j < 0)
-			num2 = 0;
+			sum = 0;
+		if (operate > 0)
+			*(r + big) = (operate % 10) + 48;
 		else
-			num2 = n2[j] - '0';
-		total_temp = num1 + num2 + oflow;
-		if (total_temp >= 10)
-			oflow = 1;
+			*(r + big) = '0';
+		if (count1 > 0)
+			count1--, dgr1 = *(n1 + count1) - 48;
 		else
-			oflow = 0;
-		if (digits >= (size_r - 1))
-			return (0);
-		r[digits] = (total_temp % 10) + '0';
-		digits++;
-		i--;
-		j--;
+			dgr1 = 0;
+		if (count2 > 0)
+			count2--, dgr2 = *(n2 + count2) - 48;
+		else
+			dgr2 = 0;
+		big--, size_r--;
 	}
-	if (digits == size_r)
-		return (0);
-	r[digits] = '\0';
-	reverse_string(r);
-	return (r);
+	if (*(r) == '0')
+		return (r + 1);
+	else
+		return (r);
+}
+
