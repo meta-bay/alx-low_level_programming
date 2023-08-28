@@ -21,12 +21,11 @@ unsigned int _strspn(char *s, char *accept)
 		{
 			if (s[i] == accept[j])
 			{
-				n_byte++;
-				break;
+				return (s);
 			}
 		}
 		i++;
 	}
-	return (n_byte);
+	return ('\0');
 }
 
