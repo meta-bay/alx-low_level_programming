@@ -5,7 +5,6 @@
  * _strstr - string func
  * @haystack: param1
  * @needle: param2
- *
  * Return: one of the values
  */
 
@@ -41,6 +40,6 @@ char *_strstr(char *haystack, char *needle)
 	if (flag)
 		return (haystack + i);
 	else
-		return (NULL);
+		return (0);
 }
 
