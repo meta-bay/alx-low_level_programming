@@ -1,20 +1,18 @@
 #include "main.h"
 
 /**
- * _strspn - conjuction
+ * _strpbrk - conjuction
  * @s: pointer
  * @accept: pointer
- * Return: n_bytes
+ * Return: s or '\0'
  */
 
-unsigned int _strspn(char *s, char *accept)
+unsigned int *_strpbrk(char *s, char *accept)
 {
 	int i;
 	int j;
-	unsigned int n_byte;
 
 	i = 0;
-	n_byte = 0;
 	while (s[i])
 	{
 		for (j = 0; accept[j]; j++)
