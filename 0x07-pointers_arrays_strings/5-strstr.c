@@ -1,27 +1,46 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
- * _strstr - the func
- * @haystack: pointer
- * @needle: pointer
- * Return: 0
+ * _strstr - string func
+ * @haystack: param1
+ * @needle: param2
+ *
+ * Return: one of the values
  */
 
 char *_strstr(char *haystack, char *needle)
 {
-	for (; *haystack, != '\0'; haystack++)
-	{
-		char *h = haystack;
-		char *n = needle;
+	int i = 0, flag = 0;
 
-		while (*h == *n && *n != '\0')
-		{
-			h++;
-			n++;
-		}
-		if (*n == '\0')
-			return (haystack);
+	if (*needle == '\0')
+	{
+		return (haystack);
 	}
-	return ('\0');
+	for (; haystack[i] != '\0'; i++)
+	{
+		int j = 0;
+
+		if (haystack[i] == needle[0])
+		{
+			while (needle[j] != '\0')
+			{
+				if (haystack[i + j] != needle[j])
+				{
+					flag = 0;
+					break;
+				}
+				else
+					flag = 1;
+				j++;
+			}
+			if (flag)
+				break;
+		}
+	}
+	if (flag)
+		return (haystack + i);
+	else
+		return (NULL);
 }
 
