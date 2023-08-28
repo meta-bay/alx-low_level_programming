@@ -1,7 +1,5 @@
 #include "main.h"
 
-#define NULL ((void *)0)
-
 /**
  * _strchr - finds char c
  * @s: the pointer
