@@ -7,7 +7,7 @@
  * Return: s or '\0'
  */
 
-unsigned int *_strpbrk(char *s, char *accept)
+char *_strpbrk(char *s, char *accept)
 {
 	int i;
 	int j;
