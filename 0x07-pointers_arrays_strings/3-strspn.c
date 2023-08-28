@@ -9,8 +9,9 @@
 
 unsigned int _strspn(char *s, char *accept)
 {
-	int i, j;
-	unsigned int n_bytes;
+	int i;
+	int j;
+	unsigned int n_byte;
 
 	i = 0;
 	n_byte = 0;
