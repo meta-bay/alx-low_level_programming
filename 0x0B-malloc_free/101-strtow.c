@@ -2,8 +2,8 @@
 #include "main.h"
 
 /**
- * count_word - helper function 
- * @s: string 
+ * count_word - helper function
+ * @s: string
  * Return: number of words
  */
 int count_word(char *s)
