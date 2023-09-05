@@ -14,7 +14,7 @@ char *_strdup(char *str)
 	char *darr;
 
 	length = 0;
-	while (str != '\0')
+	while (*str != '\0')
 		length++;
 
 	if (str == NULL)
