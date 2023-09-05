@@ -19,7 +19,7 @@ char *_strdup(char *str)
 
 	if (str == NULL)
 		return (NULL);
-	darr = (char *)malloc(sizeof(char) * (length + 1));
+	*darr = (char *)malloc(sizeof(char) * (length + 1));
 
 	for (i = 0; i <= length; i++)
 		darr[i] = str[i];
