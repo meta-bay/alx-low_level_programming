@@ -10,11 +10,16 @@
 char *_strdup(char *str)
 {
 	int i;
+	int length;
 	char *darr;
+
+	length = 0;
+	while (str != '\0')
+		length++;
 
 	if (str == NULL)
 		return (NULL);
-	darr = (char *)malloc(sizeof(char) * 3);
+	darr = (char *)malloc(sizeof(char) * (length + 1));
 
 	for (i = 0; str[i] <= '\0'; i++)
 		darr[i] = str[i];
