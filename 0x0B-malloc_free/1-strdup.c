@@ -22,9 +22,8 @@ char *_strdup(char *str)
 	darr = (char *)malloc(length + 1);
 	if (darr == NULL)
 		return (NULL);
-	for (i = 0; i < length; i++)
+	for (i = 0; str[i]; i++)
 		darr[i] = str[i];
-	darr[length] = '\0';
 	return (darr);
 }
 
