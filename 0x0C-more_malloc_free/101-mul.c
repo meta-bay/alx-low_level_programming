@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
 			carr /= 10;
 		}
 		if (carr > 0)
-			result[len1 + len2 + 1] += carry;
+			result[len1 + len2 + 1] += carr;
 	}
 	for (i = 0; i < len - 1; i++)
 	{
