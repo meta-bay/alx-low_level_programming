@@ -1,7 +1,6 @@
 section .data
-    hello db "Hello, Holberton",0  ;
-    newline db 10, 0
-    format db "%s",0
+    hello db "Hello, Holberton", 0
+    newline db 10
 
 section .text
     global main
@@ -11,9 +10,11 @@ section .text
         mov rdi, format
         mov rsi, hello
         call printf
-        mov rdi, format
-        mov rsi, newline
-        call printf
+        mov rdi, newline
+        call putchar
         pop rbp
         ret
+
+section .data
+    format db "%s",0
 
