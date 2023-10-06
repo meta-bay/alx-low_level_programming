@@ -6,6 +6,17 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+void is_elf(unsigned char *e_ident);
+void print_magic_no(unsigned char *e_ident);
+void print_elf_class(unsigned char *e_ident);
+void print_elf_data(unsigned char *e_ident);
+void print_elf_ver(unsigned char *e_ident);
+void print_elf_abi(unsigned char *e_ident);
+void print_os_abi(unsigned char *e_ident);
+void print_elf_type(unsigned int e_type, unsigned char *e_ident);
+void print_entry(unsigned long int e_entry, unsigned char *e_ident);
+void close_elf(int elf);
+
 /**
  * is_elf - checks if it is elf file
  * @e_ident: pointer
