@@ -169,6 +169,7 @@ void print_elf_abi(unsigned char *e_ident)
 /**
  * print_elf_type - prints the type
  * @e_ident: the pointer
+ * @e_type: the type
  */
 
 void print_elf_type(unsigned int e_type, unsigned char *e_ident)
@@ -202,7 +203,7 @@ void print_elf_type(unsigned int e_type, unsigned char *e_ident)
  * print_entry - prints the entry of the headerfiles
  * @e_entry: entry address
  * @e_ident: the pointer
- */ 
+ */
 
 void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 {
@@ -268,6 +269,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 {
 	Elf64_Ehdr *header;
 	int file_open, file_read;
+
 	file_open = open(argv[1], O_RDONLY);
 	if (file_open == -1)
 	{
