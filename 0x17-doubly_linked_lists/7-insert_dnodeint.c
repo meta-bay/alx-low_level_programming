@@ -27,25 +27,19 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		return (new_node);
 	}
 	ptr_to_idx = *h;
-	while (ptr_to_idx != NULL && count < idx)
+	while (ptr_to_idx != NULL && count < idx - 1)
 	{
 		ptr_to_idx = ptr_to_idx->next;
 		count++;
 	}
-	if (count == idx)
+
+	if (count == idx - 1 && ptr_to_idx != NULL)
 	{
-		new_node->next = ptr_to_idx;
-		if (ptr_to_idx->prev != NULL)
-		{
-			new_node->prev = ptr_to_idx->prev;
-			ptr_to_idx->prev->next = new_node;
-		}
-		else
-		{
-			new_node->prev = NULL;
-			*h = new_node;
-		}
-		ptr_to_idx->prev = new_node;
+		new_node->next = ptr_to_idx->next;
+		if (ptr_to_idx->next != NULL)
+			ptr_to_idx->next->prev = new_node;
+		new_node->prev = ptr_to_idx;
+		ptr_to_idx->next = new_node;
 		return (new_node);
 	}
 	free(new_node);
