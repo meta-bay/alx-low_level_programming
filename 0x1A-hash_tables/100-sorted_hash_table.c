@@ -41,72 +41,85 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	char *the_value;
 	unsigned long int index;
 
-	if (ht == NULL)
+	if (!ht || !key || !value)
 		return (0);
-
 	the_value = strdup(value);
-	if (the_value == NULL)
+	if (!the_value)
 		return (0);
-
 	index = key_index((const unsigned char *)key, ht->size);
 	temp = ht->shead;
-	while (temp)
-	{
-		if (strcmp(temp->key, key) == 0)
-		{
-			free(temp->value);
-			temp->value = the_value;
-			return (1);
-		}
+	while (temp && strcmp(temp->key, key) != 0)
 		temp = temp->snext;
+	if (temp)
+	{
+		free(temp->value);
+		temp->value = the_value;
+		return (1);
 	}
-
 	new_node = malloc(sizeof(shash_node_t));
-	if (new_node == NULL)
+	if (!new_node)
 	{
 		free(the_value);
 		return (0);
 	}
 	new_node->key = strdup(key);
-	if (new_node->key == NULL)
+	if (!new_node->key)
 	{
 		free(the_value);
 		free(new_node);
 		return (0);
 	}
+
 	new_node->value = the_value;
 	new_node->next = ht->array[index];
 	ht->array[index] = new_node;
+	shash_table_insert(ht, new_node);
+	return (1);
+}
 
-	if (ht->shead == NULL)
+/**
+ * shash_table_insert - inserts the node
+ * @ht: the sorted hash table
+ * @new_node: the node
+*/
+
+void shash_table_insert(shash_table_t *ht, shash_node_t *new_node)
+{
+	shash_node_t *temp;
+
+	if (!ht || !new_node)
+		return;
+
+	if (!ht->shead)
 	{
 		new_node->sprev = NULL;
 		new_node->snext = NULL;
 		ht->shead = new_node;
 		ht->stail = new_node;
+		return;
 	}
-	else if (strcmp(ht->shead->key, key) > 0)
+
+	if (strcmp(ht->shead->key, new_node->key) > 0)
 	{
 		new_node->sprev = NULL;
 		new_node->snext = ht->shead;
 		ht->shead->sprev = new_node;
 		ht->shead = new_node;
-	}
-	else
-	{
-		temp = ht->shead;
-		while (temp->snext != NULL && strcmp(temp->snext->key, key) < 0)
-			temp = temp->snext;
-		new_node->sprev = temp;
-		new_node->snext = temp->snext;
-		if (temp->snext == NULL)
-			ht->stail = new_node;
-		else
-			temp->snext->sprev = new_node;
-		temp->snext = new_node;
+		return;
 	}
 
-	return (1);
+	temp = ht->shead;
+	while (temp->snext != NULL && strcmp(temp->snext->key, new_node->key) < 0)
+		temp = temp->snext;
+
+	new_node->sprev = temp;
+	new_node->snext = temp->snext;
+
+	if (temp->snext == NULL)
+		ht->stail = new_node;
+	else
+		temp->snext->sprev = new_node;
+	temp->snext = new_node;
 }
 
 /**
